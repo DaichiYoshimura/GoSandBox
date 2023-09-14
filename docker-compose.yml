@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  dev:
+    build: 
+      context: ./dev
+      args:
+        GITCONFIG_EMAIL: ${GITCONFIG_EMAIL}
+        GITCONFIG_NAME: ${GITCONFIG_NAME}
+        USER: ${USER}
+        UID: ${UID:-20000}
+        GID: ${GID:-20000}
+        APP_NAME: dev
+    ports:
+      - 6379:80
+    tty: true
+    restart: unless-stopped
