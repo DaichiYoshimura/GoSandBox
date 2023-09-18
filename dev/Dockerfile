@@ -8,7 +8,6 @@ ARG UID
 ARG GID
 
 # vscode *******************************************
-
 RUN addgroup -S ${GID} && \
     adduser -S ${UID} -G ${GID}
 USER ${USER}
