@@ -12,7 +12,15 @@
 				"eamodio.gitlens",
 				"felipecaputo.git-project-manager",
 				"MS-CEINTL.vscode-language-pack-ja"
-			]
+			],
+			"settings": {
+				"terminal.integrated.shell.linux": "/bin/zsh",
+				"go.formatTool": "goimports",
+				"go.vetOnSave": "package",
+				"go.lintTool": "golangci-lint",
+				"go.lintOnSave": "file",
+				"go.useLanguageServer": true
+			}
 		}
 	}
 }
