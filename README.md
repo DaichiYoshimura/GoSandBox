@@ -1,4 +1,4 @@
-# GoSandbox 
+# vscode-devcontainer-go 
 
 A sandbox for Go programming language by using vscode devcontainer.
 
