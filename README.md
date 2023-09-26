@@ -16,4 +16,5 @@ To set up git config, add `.env` file and write env vars.
 ```.env
 GITCONFIG_EMAIL=your@email.address
 GITCONFIG_NAME=yourname
+APP_NAME=awsomeapp
 ```

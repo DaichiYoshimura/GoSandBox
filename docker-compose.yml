@@ -6,10 +6,7 @@ services:
       args:
         GITCONFIG_EMAIL: ${GITCONFIG_EMAIL}
         GITCONFIG_NAME: ${GITCONFIG_NAME}
-        USER: ${USER}
-        UID: ${UID:-20000}
-        GID: ${GID:-20000}
-        APP_NAME: dev
+        APP_NAME: ${APP_NAME}
     ports:
       - 6379:80
     tty: true

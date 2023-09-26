@@ -2,16 +2,7 @@ FROM golang:1.21.1-alpine3.18
 
 ARG GITCONFIG_EMAIL
 ARG GITCONFIG_NAME
-ARG USER_NAME
 ARG APP_NAME
-ARG UID
-ARG GID
-
-# vscode *******************************************
-RUN addgroup -S ${GID} && \
-    adduser -S ${UID} -G ${GID}
-USER ${USER}
-# **************************************************
 
 RUN apk update
 
