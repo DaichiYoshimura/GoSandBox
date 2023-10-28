@@ -36,7 +36,10 @@ RUN apk add vim curl make
 RUN go install golang.org/x/tools/gopls@latest && \
     go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest && \
     go install github.com/go-delve/delve/cmd/dlv@latest && \
-    go install github.com/cosmtrek/air@latest
+    go install github.com/cosmtrek/air@latest && \
+    go install github.com/google/wire/cmd/wire@latest
+ENV GOPATH /go
+ENV PATH $PATH:/go/bin
 # ***************************************************
 
 RUN mkdir /go/src/${APP_NAME}
