@@ -1,10 +1,10 @@
-# vscode-devcontainer-go 
+# Go VSCode DevContainer
 
 A sandbox for Go programming language by using vscode devcontainer.
 
 ## Getting Started
 
-- setup `docker` and `docker compose` on your local machine
+- Setup `docker` and `docker compose` on your local machine
 - `npm install -g @devcontainers/cli`
 - `docker compose up -d dev`
 - `devcontainer open dev`
