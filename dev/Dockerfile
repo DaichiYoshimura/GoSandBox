@@ -2,45 +2,38 @@ FROM golang:1.22.1-alpine3.19
 
 ARG GITCONFIG_EMAIL
 ARG GITCONFIG_NAME
-ARG APP_NAME
+ARG REPO_URL
 
-RUN apk update
+# Install necessary packages
+RUN apk update && \
+    apk add --no-cache tzdata git git-prompt git-zsh-completion zsh ca-certificates vim curl make && \
+    update-ca-certificates
 
-# time *********************************************
-RUN apk add tzdata && \
-    cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-# **************************************************
+# Set timezone to Asia/Tokyo
+RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
-# git **********************************************
-RUN apk add git git-prompt git-zsh-completion && \
-    git config --global user.email ${GITCONFIG_EMAIL} && \
-    git config --global user.name ${GITCONFIG_NAME}
-# **************************************************
-
-# zsh **********************************************
-RUN apk add zsh && \
+# Configure Git and Zsh
+RUN git config --global user.email "${GITCONFIG_EMAIL}" && \
+    git config --global user.name "${GITCONFIG_NAME}" && \
     sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-ENTRYPOINT /bin/zsh
-# **************************************************
 
-# https ********************************************
-RUN apk add --no-cache ca-certificates && update-ca-certificates
-ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
-ENV SSL_CERT_DIR=/etc/ssl/certs
-# **************************************************
+# Clone repository
+RUN mkdir -p /go/src/app && \
+    git clone ${REPO_URL} /go/src/app
 
-# the others ...
-RUN apk add vim curl make
+# Set working directory
+WORKDIR /go/src/app
 
-# go ************************************************
-RUN go install golang.org/x/tools/gopls@latest && \
-    go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest && \
-    go install github.com/go-delve/delve/cmd/dlv@latest && \
-    go install github.com/cosmtrek/air@latest && \
-    go install github.com/google/wire/cmd/wire@latest
-ENV GOPATH /go
-ENV PATH $PATH:/go/bin
-# ***************************************************
+# Install Go tools
+RUN go install golang.org/x/tools/gopls@latest
+RUN go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+RUN go install github.com/go-delve/delve/cmd/dlv@latest
+RUN go install github.com/cosmtrek/air@latest
+RUN go install github.com/google/wire/cmd/wire@latest
 
-RUN mkdir /go/src/${APP_NAME}
-WORKDIR /go/src/${APP_NAME}
+# Set environment variables
+ENV GOPATH=/go \
+    PATH=$PATH:/go/bin
+
+# Set default entrypoint
+ENTRYPOINT ["/bin/zsh"]
