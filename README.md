@@ -7,7 +7,7 @@ A sandbox for Go programming language by using vscode devcontainer.
 - Setup `docker` and `docker compose` on your local machine
 - `npm install -g @devcontainers/cli`
 - `docker compose up -d dev`
-- `devcontainer open dev`
+- `devcontainer open dev` <- deprecated! use gui.
 
 ## Set up `.env`
 
