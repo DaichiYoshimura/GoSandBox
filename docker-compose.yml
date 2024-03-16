@@ -3,11 +3,7 @@ services:
   dev:
     build: 
       context: ./dev
-      args:
-        GITCONFIG_EMAIL: ${GITCONFIG_EMAIL}
-        GITCONFIG_NAME: ${GITCONFIG_NAME}
-        REPO_URL: ${REPO_URL}
     ports:
-      - ${LOCAL_PORT}:80
+      - ${CONTAINER_PORT}:80
     tty: true
     restart: unless-stopped
