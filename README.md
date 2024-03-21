@@ -10,11 +10,9 @@ A sandbox for Go programming language by using vscode devcontainer.
 
 ## Set up Git Setting
 
-Set up Symlinks for .gitconfig & id_rsa
-See docker-compose.yml volumes
+- Set up Symlinks for .gitconfig & id_rsa
+- See docker-compose.yml volumes
 
 ## Environment
-
-See docker-compose.yml
 
 - CONTAINER_PORT

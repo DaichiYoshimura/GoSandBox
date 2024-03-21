@@ -2,7 +2,7 @@ FROM golang:1.22.1-alpine3.19
 
 # Install necessary packages
 RUN apk update && \
-    apk add --no-cache tzdata git zsh ca-certificates vim curl make wget && \
+    apk add --no-cache openssh-client tzdata git zsh ca-certificates vim curl make wget && \
     update-ca-certificates
 
 # Set timezone to Asia/Tokyo
