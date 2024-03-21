@@ -2,11 +2,8 @@ FROM golang:1.22.1-alpine3.19
 
 # Install necessary packages
 RUN apk update && \
-    apk add --no-cache tzdata git git-prompt git-zsh-completion zsh ca-certificates vim curl make && \
+    apk add --no-cache tzdata git zsh ca-certificates vim curl make wget && \
     update-ca-certificates
-
-# .gitconfig
-COPY .gitconfig /root/.gitconfig
 
 # Set timezone to Asia/Tokyo
 RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
@@ -21,8 +18,6 @@ WORKDIR /go/src/app
 RUN go install golang.org/x/tools/gopls@latest
 RUN go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 RUN go install github.com/go-delve/delve/cmd/dlv@latest
-RUN go install github.com/cosmtrek/air@latest
-RUN go install github.com/google/wire/cmd/wire@latest
 
 # Set environment variables
 ENV GOPATH=/go \

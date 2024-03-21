@@ -8,15 +8,10 @@ A sandbox for Go programming language by using vscode devcontainer.
 - Set dev/.gitconfig & env 
 - `docker compose up -d dev`
 
-## .gitconfig
+## Set up Git Setting
 
-```txt
-[credential]
-    helper = store
-[credential "https://github.com"]
-    username = xxxx
-    password = xxxx
-```
+Set up Symlinks for .gitconfig & id_rsa
+See docker-compose.yml volumes
 
 ## Environment
 
