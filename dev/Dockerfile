@@ -1,4 +1,4 @@
-FROM golang:1.22.1-alpine3.19
+FROM golang:1.22.6-alpine3.20
 
 # Install necessary packages
 RUN apk update && \
@@ -12,7 +12,7 @@ RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 RUN sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
 # Set working directory
-WORKDIR /go/src/app
+WORKDIR /go/src
 
 # Install Go tools
 RUN go install golang.org/x/tools/gopls@latest

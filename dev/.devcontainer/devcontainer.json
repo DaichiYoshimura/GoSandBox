@@ -1,7 +1,7 @@
 {
 	"service": "dev",
 	"dockerComposeFile": "../../docker-compose.yml",
-	"workspaceFolder": "/go/src/app",
+	"workspaceFolder": "/go/src",
 	"customizations": {
 		"vscode": {
 			"extensions": [
